@@ -64,7 +64,7 @@ HoneyBadgerTool/
 
 ## License
 
-Proprietary - © Tripact
+Proprietary - © TripactEntertainment
 
 ## Version
 
