@@ -31,7 +31,7 @@ Calculate distances between coordinate points - essential for CNC programming.
 2. Run `HoneyBadger.pyw` or `install_and_run.bat`
 
 ### Android
-1. Download the APK from the releases
+1. **[Download the APK (v1.3)](https://www.dropbox.com/scl/fi/2fc2kyai2gfos738t2sgy/honeybadger-1.3-arm64-v8a-debug.apk?rlkey=q0bjasbf7hsllazaqqve4jhk3&st=d5pd9h4k&dl=0)**
 2. Install on your Android device (enable "Install from unknown sources")
 
 ## Building Android APK
