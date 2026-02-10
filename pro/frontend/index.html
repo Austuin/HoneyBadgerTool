@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HoneyBadger Pro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="login-screen" class="screen active">
+        <div class="container">
+            <h1>🦡 HoneyBadger Pro</h1>
+            <form id="login-form">
+                <input type="text" id="login-username" placeholder="Username" required>
+                <input type="password" id="login-password" placeholder="Password" required>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <p id="login-error" class="error"></p>
+            <p class="small-text">First user becomes Admin</p>
+            <button id="show-register" class="btn btn-secondary">Create Account</button>
+        </div>
+    </div>
+
+    <!-- Register Screen -->
+    <div id="register-screen" class="screen">
+        <div class="container">
+            <h1>Create Account</h1>
+            <form id="register-form">
+                <input type="text" id="reg-username" placeholder="Username" required>
+                <input type="text" id="reg-initials" placeholder="Initials (e.g., JD)" maxlength="4" required>
+                <input type="password" id="reg-password" placeholder="Password" required>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+            <p id="register-error" class="error"></p>
+            <button id="show-login" class="btn btn-secondary">Back to Login</button>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="main-app" class="screen">
+        <!-- Header -->
+        <header>
+            <h1>🦡 HoneyBadger Pro</h1>
+            <div class="user-info">
+                <span id="user-display"></span>
+                <button id="logout-btn" class="btn btn-small">Logout</button>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav>
+            <button class="nav-btn active" data-page="job-board">Job Board</button>
+            <button class="nav-btn" data-page="my-jobs">My Jobs</button>
+            <button class="nav-btn" data-page="archive">Archive</button>
+            <button class="nav-btn admin-only" data-page="admin">Admin</button>
+        </nav>
+
+        <!-- Job Board Page -->
+        <div id="job-board" class="page active">
+            <h2>Job Board</h2>
+            <div id="jobs-list" class="card-list"></div>
+        </div>
+
+        <!-- My Jobs Page -->
+        <div id="my-jobs" class="page">
+            <h2>My Jobs</h2>
+            <div id="active-clocks" class="active-clocks"></div>
+            <div id="my-jobs-list" class="card-list"></div>
+        </div>
+
+        <!-- Archive Page -->
+        <div id="archive" class="page">
+            <h2>Completed Jobs</h2>
+            <div id="archive-list" class="card-list"></div>
+        </div>
+
+        <!-- Admin Page -->
+        <div id="admin" class="page admin-only">
+            <h2>Admin Panel</h2>
+            
+            <!-- Add Job Form -->
+            <div class="admin-section">
+                <h3>Add New Job</h3>
+                <form id="add-job-form">
+                    <input type="text" id="job-name" placeholder="Job Name" required>
+                    <textarea id="job-description" placeholder="Description (optional)"></textarea>
+                    <textarea id="job-requirements" placeholder="Requirements (optional)"></textarea>
+                    <div class="form-row">
+                        <label>
+                            Max Workers:
+                            <input type="number" id="job-max-workers" value="1" min="1" max="99">
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="job-auto-review">
+                            Auto-Complete
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Job</button>
+                </form>
+            </div>
+
+            <!-- Review Queue -->
+            <div class="admin-section">
+                <h3>Pending Review</h3>
+                <div id="review-queue" class="card-list"></div>
+            </div>
+
+            <!-- User Management -->
+            <div class="admin-section">
+                <h3>Users</h3>
+                <div id="users-list" class="card-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Job Detail Modal -->
+    <div id="job-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-job-name"></h2>
+            <p id="modal-job-description"></p>
+            <div id="modal-requirements" class="requirements"></div>
+            <div class="modal-info">
+                <p>Workers: <span id="modal-workers"></span></p>
+                <p>Status: <span id="modal-status"></span></p>
+                <p>Total Time: <span id="modal-time"></span></p>
+            </div>
+            <h3>Assigned Workers</h3>
+            <div id="modal-assignments" class="assignments-list"></div>
+            <div id="modal-actions" class="modal-actions"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

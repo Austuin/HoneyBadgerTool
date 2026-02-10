@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: honeybadger-db
+    environment:
+      POSTGRES_USER: honeybadger
+      POSTGRES_PASSWORD: honeybadger
+      POSTGRES_DB: honeybadger
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  app:
+    build: ./backend
+    container_name: honeybadger-app
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://honeybadger:honeybadger@db:5432/honeybadger
+      SECRET_KEY: change-this-to-a-secure-random-string
+    depends_on:
+      - db
+    volumes:
+      - ./frontend:/app/frontend:ro
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
